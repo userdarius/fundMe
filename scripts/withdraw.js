@@ -1,15 +1,13 @@
-const { getNamedAccounts, ethers } = require("hardhat");
+const { ethers, getNamedAccounts } = require("hardhat");
 
 async function main() {
 	const { deployer } = await getNamedAccounts();
-	const fundMe = ethers.getContract("FundMe", deployer);
-	console.log("FundMe contract address:", fundMe.address);
-
+	const fundMe = await ethers.getContract("FundMe", deployer);
+	console.log(`Got contract FundMe at ${fundMe.address}`);
+	console.log("Withdrawing from contract...");
 	const transactionResponse = await fundMe.withdraw();
-
-	await transactionResponse.wait(1);
-
-	console.log("Withdrew!");
+	await transactionResponse.wait();
+	console.log("Got it back!");
 }
 
 main()
