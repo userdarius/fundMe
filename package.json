@@ -1,4 +1,10 @@
 {
+  "name": "fund-me-fcc",
+  "version": "1.0.0",
+  "author": {
+    "name": "Darius Foodeei",
+    "email": "darius.foodei@gmail.com"
+  },
   "devDependencies": {
     "@chainlink/contracts": "^0.5.1",
     "@ethersproject/abi": "^5.4.7",
@@ -22,5 +28,12 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3"
+  },
+  "scripts": {
+    "test" : "yarn hardhat test",
+    "test:staging": "yarn hardhat test --network goerli",
+    "lint": "yarn solhint 'contracts/*.sol'",
+    "format": "yarn prettier --write .",
+    "coverage": "yarn hardhat coverage"
   }
 }
